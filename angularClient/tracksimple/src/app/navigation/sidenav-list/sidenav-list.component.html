@@ -1,0 +1,32 @@
+<mat-nav-list>
+  <a mat-list-item routerLink="/" (click)="onClose()">
+    <mat-icon>home</mat-icon>
+    <span class="nav-caption">Home</span>
+  </a>
+  <a mat-list-item routerLink="/signup" (click)="onClose()" *ngIf="!isAuth">
+    <mat-icon>face</mat-icon>
+    <span class="nav-caption">Sign Up</span>
+  </a>
+  <a mat-list-item routerLink="/login" (click)="onClose()" *ngIf="!isAuth">
+    <mat-icon>input</mat-icon>
+    <span class="nav-caption">Login</span>
+  </a>
+  <a mat-list-item routerLink="/dashboard" (click)="onClose()" *ngIf="isAuth">
+    <mat-icon>fastfood</mat-icon>
+    <span class="nav-caption">Dashboard</span>
+  </a>
+  <a mat-list-item routerLink="/goals" (click)="onClose()" *ngIf="isAuth">
+    <mat-icon>stars</mat-icon>
+    <span class="nav-caption">Goals</span>
+  </a>
+  <a mat-list-item routerLink="/settings" (click)="onClose()" *ngIf="isAuth">
+    <mat-icon>settings</mat-icon>
+    <span class="nav-caption">Settings</span>
+  </a>
+  <mat-list-item  *ngIf="isAuth">
+    <button mat-icon-button>
+      <mat-icon>eject</mat-icon>
+      <span class="nav-caption"  (click)="onLogout()">Logout</span>
+    </button>
+  </mat-list-item>
+</mat-nav-list>

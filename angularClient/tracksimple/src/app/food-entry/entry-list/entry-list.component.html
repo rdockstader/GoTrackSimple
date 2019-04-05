@@ -1,0 +1,158 @@
+<section class="new-training" fxLayout fxLayoutAlign="center">
+  <mat-card fxFlex.xs="100%" fxFlex="600px">
+    <mat-card-content fxLayout="row" fxLayoutAlign="center center">
+      <button mat-icon-button (click)="onPreviousDate()"><mat-icon>arrow_back_ios</mat-icon></button>
+      <input #date matInput [matDatepicker]="entryDatePicker" placeholder="Entry Date" [(ngModel)]="entryDate" (dateChange)="onDateChanged()" disabled>
+      <mat-datepicker-toggle matSuffix [for]="entryDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #entryDatePicker disabled="false"></mat-datepicker>
+      <button mat-icon-button (click)="onNextDate()"><mat-icon>arrow_forward_ios</mat-icon></button>
+    </mat-card-content>
+    <mat-card-title fxLayoutAlign="center">Goal progress</mat-card-title>
+    <mat-card-content fxLayout="column" fxLayouteAlign="center">
+      <label for="calories-bar">Calories</label>
+      <mat-progress-bar mode="determinate" [value]="calValue" id="calories-bar"></mat-progress-bar>
+      <div fxLayout="row">
+        <div fxLayout="column">
+          <label for="protein-spinner">Protein</label>
+          <mat-progress-spinner mode="determinate" [value]="protValue" id="protein-spinner"></mat-progress-spinner>
+        </div>
+        <div fxLayout="column">
+          <label for="carb-spinner">Carbs</label>
+          <mat-progress-spinner mode="determinate" [value]="carbValue" id="carb-spinner" color="accent"></mat-progress-spinner>
+        </div>
+        <div fxLayout="column">
+          <label for="fat-spinner">Fat</label>
+          <mat-progress-spinner mode="determinate" [value]="fatValue" id="fat-spinner" color="warn"></mat-progress-spinner>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-title fxLayoutAlign="center">Breakfast</mat-card-title>
+    <mat-card-content>
+      <mat-table [dataSource]="breakfastDataSource">
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{ element.name }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="calories">
+          <mat-header-cell *matHeaderCellDef>Calories</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{ element.calories | number }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="protein">
+          <mat-header-cell *matHeaderCellDef>Protein</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{ element.protein | number }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="carbs">
+          <mat-header-cell *matHeaderCellDef>Carbs</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{ element.carbs | number }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="fats">
+          <mat-header-cell *matHeaderCellDef>Fat</mat-header-cell>
+          <mat-cell *matCellDef="let element">{{ element.fats | number }}</mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </mat-card-content>
+    <mat-card-title fxLayoutAlign="center">Lunch</mat-card-title>
+    <mat-card-content>
+        <mat-table [dataSource]="lunchDataSource">
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{ element.name }}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="calories">
+            <mat-header-cell *matHeaderCellDef>Calories</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{ element.calories | number }}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="protein">
+            <mat-header-cell *matHeaderCellDef>Protein</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{ element.protein | number }}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="carbs">
+            <mat-header-cell *matHeaderCellDef>Carbs</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{ element.carbs | number }}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="fats">
+            <mat-header-cell *matHeaderCellDef>Fat</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{ element.fats | number }}</mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+    </mat-card-content>
+    <mat-card-title fxLayoutAlign="center">Dinner</mat-card-title>
+    <mat-card-content>
+        <mat-table [dataSource]="dinnerDataSource">
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{ element.name }}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="calories">
+            <mat-header-cell *matHeaderCellDef>Calories</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{ element.calories | number }}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="protein">
+            <mat-header-cell *matHeaderCellDef>Protein</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{ element.protein | number }}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="carbs">
+            <mat-header-cell *matHeaderCellDef>Carbs</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{ element.carbs | number }}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="fats">
+            <mat-header-cell *matHeaderCellDef>Fat</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{ element.fats | number }}</mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+    </mat-card-content>
+    <mat-card-title fxLayoutAlign="center">Snacks</mat-card-title>
+    <mat-card-content>
+        <mat-table [dataSource]="snackDataSource">
+            <ng-container matColumnDef="name">
+              <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+              <mat-cell *matCellDef="let element">{{ element.name }}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="calories">
+              <mat-header-cell *matHeaderCellDef>Calories</mat-header-cell>
+              <mat-cell *matCellDef="let element">{{ element.calories | number }}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="protein">
+              <mat-header-cell *matHeaderCellDef>Protein</mat-header-cell>
+              <mat-cell *matCellDef="let element">{{ element.protein | number }}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="carbs">
+              <mat-header-cell *matHeaderCellDef>Carbs</mat-header-cell>
+              <mat-cell *matCellDef="let element">{{ element.carbs | number }}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="fats">
+              <mat-header-cell *matHeaderCellDef>Fat</mat-header-cell>
+              <mat-cell *matCellDef="let element">{{ element.fats | number }}</mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          </mat-table>
+    </mat-card-content>
+  </mat-card>
+</section>
